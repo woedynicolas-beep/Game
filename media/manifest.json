@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "_hinweis": "Leerer src = eingebaute prozedurale Animation. Siehe media/README.md, bevor du hier etwas einträgst.",
+  "clips": {
+    "sc_nadine":  { "src": "", "poster": "", "credit": "", "license": "", "muted": true },
+    "sc_selina":  { "src": "", "poster": "", "credit": "", "license": "", "muted": true },
+    "sc_yvonne":  { "src": "", "poster": "", "credit": "", "license": "", "muted": true },
+    "sc_ricarda": { "src": "", "poster": "", "credit": "", "license": "", "muted": true },
+    "sc_trio":    { "src": "", "poster": "", "credit": "", "license": "", "muted": true }
+  }
+}

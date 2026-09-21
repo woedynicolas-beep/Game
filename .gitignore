@@ -1,0 +1,9 @@
+# Videomaterial gehört nicht ins Repository (Lizenz, Persönlichkeitsrecht)
+media/clips/*
+!media/clips/.gitkeep
+*.mp4
+*.webm
+*.mov
+
+.DS_Store
+node_modules/

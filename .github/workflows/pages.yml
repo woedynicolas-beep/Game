@@ -1,0 +1,47 @@
+# Veröffentlicht das Spiel auf GitHub Pages.
+#
+# Einmalig nötig: Settings → Pages → Source auf "GitHub Actions" stellen.
+# Danach läuft dieser Workflow bei jedem Push automatisch.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [claude/nsfw-18-plus-game-uzxr1w, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - name: Story-Verweise prüfen
+        run: node tools/validate.js
+      - name: Alle Enden erreichbar?
+        run: node tools/reachability.js
+      - name: JavaScript-Syntax prüfen
+        run: for f in js/*.js; do node --check "$f"; done
+
+  deploy:
+    needs: validate
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: '.' }
+      - id: deployment
+        uses: actions/deploy-pages@v4
