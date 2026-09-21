@@ -9,11 +9,13 @@ genauso wie am Desktop.
 
 ## Sofort spielen
 
-**Auf dem Handy, ohne Installation:** GitHub Pages einschalten —
-*Settings → Pages → Source: „Deploy from a branch" → Branch:
-`claude/nsfw-18-plus-game-uzxr1w`, Ordner `/ (root)` → Save.*
-Nach ein bis zwei Minuten liegt das Spiel unter
+**Auf dem Handy, ohne Installation:** Nichts einzurichten — der Workflow in
+`.github/workflows/pages.yml` schaltet GitHub Pages beim ersten Lauf selbst ein
+(`configure-pages` mit `enablement: true`) und deployt dorthin. Ein bis zwei
+Minuten nach dem Push liegt das Spiel unter
 `https://woedynicolas-beep.github.io/Game/`.
+
+Den Stand des Deploys zeigt der Reiter **Actions** im Repository.
 
 Die Adresse im Handy-Browser öffnen, „Zum Home-Bildschirm hinzufügen" wählen —
 dank `manifest.webmanifest` startet es dann wie eine App im Vollbild.

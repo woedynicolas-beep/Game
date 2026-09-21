@@ -40,7 +40,12 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      # enablement: true schaltet Pages per API selbst ein, falls es im Repo
+      # noch nie aktiviert wurde — sonst bricht der Schritt mit
+      # "Get Pages site failed ... Not Found" ab.
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with: { path: '.' }
       - id: deployment
