@@ -124,3 +124,14 @@ node tools/reachability.js   # 4000 Zufallsdurchlaeufe: jedes Ende erreichbar?
 ```
 
 Beide laufen bei jedem Push in GitHub Actions, bevor deployt wird.
+
+Dazu ein Browser-Smoketest, der lokal gegen einen laufenden Server geht und
+die Dinge prueft, die Datentests nicht sehen — Altersprüfung, Szenenwechsel,
+laufende Canvas-Animation, Speicherstand:
+
+```bash
+python3 -m http.server 8123 &
+node tools/smoke-browser.js
+```
+
+Braucht Playwright; Pfad notfalls ueber `PLAYWRIGHT_PATH` und `CHROMIUM` setzen.

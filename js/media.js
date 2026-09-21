@@ -40,6 +40,9 @@ const Media = (() => {
     layer.appendChild(canvas);
     resize();
     addEventListener('resize', resize, {passive:true});
+    // Beim Start ist #game noch display:none, die Ebene also 0x0 — ohne das
+    // hier bliebe das Canvas leer, weil draw() bei Nullgröße aussteigt.
+    if (window.ResizeObserver) new ResizeObserver(resize).observe(layer);
     try {
       const r = await fetch('media/manifest.json', {cache:'no-store'});
       if (r.ok) manifest = await r.json();
@@ -50,8 +53,11 @@ const Media = (() => {
   function resize(){
     if (!canvas) return;
     const d = Math.min(devicePixelRatio || 1, 2);
-    canvas.width  = layer.clientWidth  * d;
-    canvas.height = layer.clientHeight * d;
+    const w = Math.round(layer.clientWidth  * d);
+    const h = Math.round(layer.clientHeight * d);
+    if (!w || !h) return;                       // Ebene noch nicht sichtbar
+    if (canvas.width === w && canvas.height === h) return;  // Zuweisung löscht das Canvas
+    canvas.width = w; canvas.height = h;
     canvas.style.width = '100%'; canvas.style.height = '100%';
     ctx.setTransform(d,0,0,d,0,0);
   }
@@ -66,6 +72,7 @@ const Media = (() => {
     if (enabled && clip && clip.src) { playVideo(clip); return; }
 
     canvas.style.display = 'block';
+    resize();
     if (badge){
       if (cur.label){ badge.textContent = cur.label; badge.classList.remove('hidden'); }
       else badge.classList.add('hidden');
