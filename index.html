@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#0b0a10">
-<meta name="description" content="Bergheim Protokoll – interaktive Story für Erwachsene (18+).">
+<meta name="description" content="Das Hollmann-Protokoll – interaktive Story für Erwachsene (18+).">
 <meta name="robots" content="noindex,nofollow">
 <meta name="rating" content="adult">
 <meta name="RATING" content="RTA-5042-1996-1400-1577-RTA">
-<title>Bergheim Protokoll</title>
+<title>Das Hollmann-Protokoll</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128293;</text></svg>">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="css/style.css">
@@ -19,11 +19,11 @@
 <div id="agegate" class="screen gate">
   <div class="gate-inner">
     <div class="gate-badge">18+</div>
-    <h1>Bergheim Protokoll</h1>
+    <h1>Das Hollmann-Protokoll</h1>
     <p class="gate-sub">Eine interaktive Erzählung für Erwachsene</p>
     <div class="gate-warn">
       <p><strong>Dieses Spiel enthält explizite sexuelle Inhalte</strong>, Alkohol, Untreue, Rache­motive und Schilderungen von Mobbing und emotionalem Missbrauch.</p>
-      <p>Alle dargestellten Figuren sind <strong>fiktiv und mindestens 21&nbsp;Jahre alt</strong>. Alle sexuellen Handlungen erfolgen zwischen einvernehmlich handelnden Erwachsenen.</p>
+      <p>Alle dargestellten Figuren sind <strong>frei erfunden und mindestens 25&nbsp;Jahre alt</strong>; sie bilden keine realen Personen ab. Alle sexuellen Handlungen erfolgen zwischen einvernehmlich handelnden Erwachsenen.</p>
       <p class="gate-fine">Mit dem Fortfahren bestätigst du, dass du volljährig bist (mindestens 18 Jahre bzw. das in deinem Land geltende Mindestalter) und solche Inhalte freiwillig sehen möchtest.</p>
     </div>
     <label class="gate-check"><input type="checkbox" id="gate-confirm"> <span>Ich bin volljährig und stimme zu.</span></label>
@@ -39,16 +39,17 @@
 <div id="titlescreen" class="screen hidden">
   <div class="title-bg"></div>
   <div class="title-inner">
-    <p class="kicker">Abiturjahrgang 2010 &middot; Klassentreffen</p>
-    <h1 class="title-logo">Bergheim<span>Protokoll</span></h1>
-    <p class="title-tag">Sie haben dich kaputt gemacht.<br>Jetzt stehst du vor ihrer Haustür.</p>
+    <p class="kicker">Steinbach &middot; vierzehn Abende</p>
+    <h1 class="title-logo">Hollmann<span>Protokoll</span></h1>
+    <p class="title-tag">Einunddreißig Jahre hat er dir gehört.<br>Jetzt gehört dir sein Haus.</p>
     <div class="title-menu">
       <button id="btn-continue" class="btn btn-primary hidden">Fortsetzen</button>
       <button id="btn-new" class="btn btn-primary">Neues Spiel</button>
+      <button id="btn-cast" class="btn btn-ghost">Figuren</button>
       <button id="btn-gallery" class="btn btn-ghost">Galerie</button>
       <button id="btn-settings" class="btn btn-ghost">Einstellungen</button>
     </div>
-    <p class="title-foot">v1.0 &middot; 18+ &middot; Fiktion. Alle Figuren 21+.</p>
+    <p class="title-foot">v2.0 &middot; 18+ &middot; Fiktion. Alle Figuren 25+.</p>
   </div>
 </div>
 
@@ -58,6 +59,7 @@
   <header id="hud">
     <button id="hud-menu" class="icon-btn" aria-label="Menü">☰</button>
     <div id="hud-chapter">Prolog</div>
+    <div id="hud-abende"></div>
     <button id="hud-stats" class="icon-btn" aria-label="Werte">◈</button>
   </header>
 
@@ -88,6 +90,7 @@
     <button id="m-save" class="btn btn-ghost">Speichern</button>
     <button id="m-load" class="btn btn-ghost">Laden</button>
     <button id="m-log" class="btn btn-ghost">Verlauf</button>
+    <button id="m-cast" class="btn btn-ghost">Figuren</button>
     <button id="m-gallery" class="btn btn-ghost">Galerie</button>
     <button id="m-settings" class="btn btn-ghost">Einstellungen</button>
     <button id="m-title" class="btn btn-ghost">Zum Titelbild</button>
@@ -110,10 +113,11 @@
 
 <script src="js/media.js"></script>
 <script src="js/story-core.js"></script>
-<script src="js/story-nadine.js"></script>
-<script src="js/story-selina.js"></script>
-<script src="js/story-yvonne.js"></script>
-<script src="js/story-ricarda.js"></script>
+<script src="js/story-sabine.js"></script>
+<script src="js/story-christa.js"></script>
+<script src="js/story-lena.js"></script>
+<script src="js/story-andrea.js"></script>
+<script src="js/story-marlene.js"></script>
 <script src="js/story-finale.js"></script>
 <script src="js/engine.js"></script>
 </body>

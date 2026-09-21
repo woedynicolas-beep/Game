@@ -1,4 +1,4 @@
-# Bergheim Protokoll
+# Das Hollmann-Protokoll
 
 Eine textbasierte, verzweigende Erzählung für Erwachsene (18+). Läuft als reine
 Webseite ohne Build-Schritt, ohne Server, ohne Abhängigkeiten — auf dem Handy
@@ -32,23 +32,39 @@ python3 -m http.server 8000
 
 ## Die Geschichte
 
-Jonas Reiter, 34, wurde am Gymnasium Bergheim drei Jahre lang gequält. Heute hat
-er sein Unternehmen verkauft und fährt zum fünfzehnten Klassentreffen zurück —
-mit einer Mappe über die wirtschaftlichen Schwachstellen der drei Männer, die
-ihm das angetan haben.
+Jonas Reiter, 51, wurde am Steinbacher Gymnasium drei Jahre lang von Ralf
+Hollmann gequält. Einunddreißig Jahre später hat er sein Unternehmen verkauft —
+und Hollmann Bau sucht elf Millionen Kapital.
 
-Vier Frauen stehen zwischen ihm und dem, was er vorhat. Jede von ihnen hat
-eigene Gründe, mit ihm zu reden, und jede weiß mehr als er.
+Er mietet ein Haus am See und plant vierzehn Abende. Um Ralf herum stehen fünf
+Frauen: seine Frau, seine Ex-Frau, seine Tochter, seine Schwester und seine
+angeheiratete Tante. Jede hat seit Jahren keinen Grund gehabt, sich auf etwas
+zu freuen.
 
-**Umfang:** 54 Szenen, ~7.600 Wörter, 4 Handlungsstränge, **5 Enden**.
+**Umfang:** 32 Szenenknoten, ~7.600 Wörter, 5 Handlungsstränge à 4 Stufen,
+**5 Enden**.
 
-**Werte,** die jede Entscheidung verschieben und am Ende bestimmen, welche
-Schlüsse offenstehen: *Rache*, *Nähe*, *Einfluss*, *Ruf*.
+### Bindungsstufen
+
+Jede Frau durchläuft vier Stufen — *Neugier · Übertritt · Verlangen ·
+Abhängigkeit*. Jede Stufe kostet einen Abend, und es gibt nur vierzehn davon
+bei zwanzig möglichen Stufen. Wer alle fünf tief führen will, schafft es nicht;
+wer zwei ausreizt, verliert drei. Diese Knappheit ist die zentrale
+Entscheidung des Spiels.
+
+Das verborgene Ende **Die Fünf** verlangt Breite statt Tiefe: Bindungssumme
+mindestens 13 bei jeder Frau auf mindestens Stufe 2 — mit vierzehn Abenden
+genau erreichbar, etwa als 3/3/3/3/2.
+
+**Werte:** *Rache*, *Kontrolle*, *Ruf*.
 
 ## Funktionen
 
-* Vier verzweigende Handlungsstränge, frei in beliebiger Reihenfolge spielbar
-* Fünf Enden, zwei davon an Bedingungen geknüpft
+* Fünf Handlungsstränge à vier Stufen, frei in beliebiger Reihenfolge spielbar
+* Abend-Budget, das Tiefe gegen Breite ausspielt
+* Fünf Enden, zwei davon an den Spielzustand geknüpft
+* Beat-für-Beat-Erzählung: ein Absatz pro Tap, das Bild wechselt mit
+* Porträtkarte beim ersten Auftritt jeder Figur
 * Automatisches Speichern; Galerie freigeschalteter Szenen überlebt Neustarts
 * Verlauf mit allen getroffenen Entscheidungen
 * Explizite Szenen in den Einstellungen abschaltbar
@@ -61,68 +77,77 @@ index.html              Shell, Altersprüfung, Titelbild
 css/style.css           Ein Stylesheet, mobile-first
 js/engine.js            Zustand, Verzweigung, Speicherstand, UI
 js/media.js             Visuelle Schicht (s. u.)
-js/story-*.js           Reine Daten: Szenen, Text, Entscheidungen
+js/story-core.js        Figuren, Werte, Prolog, Hub
+js/story-<frau>.js      Je vier Stufen pro Figur
+js/story-finale.js      Gesellschafterversammlung und Enden
 media/                  Manifest für optionales eigenes Videomaterial
 docs/INHALTSWARNUNGEN.md
 ```
 
 ### Eine neue Szene anlegen
 
+Jede Textzeile kann als letztes Element ein Visual-Objekt tragen. Wechselt es,
+wechselt das Bild — im Beat-Modus also bei jedem Tap.
+
 ```js
-STORY.nodes.meine_szene = {
-  chapter:'Akt II · Nadine', title:'Donnerstag · Büro',
-  scene:{id:'office', palette:'warm', intensity:.4, figures:2, motion:'pulse'},
+STORY.nodes.sabine_2 = {
+  chapter:'Sabine · Stufe 2', title:'Übertritt',
+  frau:'sabine', stufe:2, mode:'beat', adult:true, unlock:'sabine_st2',
+  scene:{id:'buero', palette:'warm', intensity:.4, figures:2},
   text:[
-    ['narr','Beschreibender Text.'],
-    ['said','NADINE','Wörtliche Rede.'],
-    ['said','JONAS','Antwort.','mc'],
-    ['think','Innerer Monolog.'],
+    ['narr','Beschreibender Text.',        {v:'kiss',    i:.5}],
+    ['said','SABINE','Wörtliche Rede.',    {v:'undress', i:.6}],
+    ['said','JONAS','Antwort.','mc',       {v:'undress', i:.6}],
+    ['narr','Erster Auftritt einer Figur.',{v:'close', i:.3, portrait:'sabine'}],
     ['beat','· · ·']
   ],
   choices:[
-    {t:'Entscheidung', to:'naechster_knoten',
-     set:{rache:2, flags:{etwas_passiert:1}}, tag:'r'}
+    {t:'Entscheidung', to:'hub',
+     set:{kontrolle:2, bind:{sabine:1}, flags:{etwas:1}}, tag:'m'}
   ]
 };
 ```
 
-`show` / `hide` an einer Entscheidung nehmen einen Ausdruck, der gegen den
-Zustand ausgewertet wird: `show:'flags.nordhang && rache >= 4'`. Verfügbar sind
-`flags`, `stats`, die Werte direkt (`rache`, `naehe`, `macht`, `ruf`) sowie
-`tracks` und `allies`.
+Für Stufenknoten gilt eine Konvention, die `tools/validate.js` erzwingt: Der
+Knotenname ist `<frau>_<stufe>`, jede Entscheidung führt zurück zum Hub und
+erhöht `bind.<frau>` um genau 1 — daraus zieht die Engine den Abendverbrauch.
 
-Verweise prüfen:
-
-```bash
-node tools/validate.js
-```
+`show` / `hide` an einer Entscheidung nehmen einen Ausdruck gegen den
+Spielzustand: `show:'summe >= 13 && alleMin >= 2'`. Verfügbar sind `flags`,
+`stats`, `bind`, `abende`, die Werte direkt (`rache`, `kontrolle`, `ruf`), die
+Frauen direkt (`sabine`, `lena`, …) sowie `summe`, `alleMin`, `stufe3`,
+`stufe4`.
 
 ## Die visuelle Schicht
 
 Ausgeliefert wird eine **prozedurale Canvas-Animation**: abstrakte Silhouetten,
-Farbpalette, Bewegungstempo und Intensität kommen aus den Szenendaten. Sie
-braucht keine Dateien und funktioniert offline.
+Farbpalette und Bewegungstempo aus den Szenendaten. Sie braucht keine Dateien
+und funktioniert offline.
 
-Optional kannst du in `media/manifest.json` **eigene Clips** hinterlegen, die
-dann statt der Animation laufen.
+Zusätzlich gibt es den Haken für **eigene Clips**, und zwar pro Beschreibung:
+Jede Textzeile trägt einen Visual-Tag (`kiss`, `undress`, `ride`, …). Wechselt
+der Tag, wechselt der Clip. Gesucht wird in dieser Reihenfolge:
 
-**Dieses Repository enthält kein Videomaterial und lädt auch keines herunter.**
-Es gibt bewusst keine Funktion, die Clips von Porno-Plattformen bezieht oder
-einbettet — das wäre gegenüber den abgebildeten Personen eine Verbreitung ohne
-deren Einwilligung (§§ 184k, 201a StGB) und gegenüber den Produzenten eine
-Urheberrechtsverletzung. Welche Wege stattdessen tragfähig sind — lizenziertes
-Studiomaterial, Eigenproduktion mit Model Release, vollsynthetisches Material —
-steht in [`media/README.md`](media/README.md).
+```
+clips["lena/ride"]   →   clips["ride"]   →   prozedurale Animation
+```
 
-## Lizenz
+`media/manifest.json` bringt die Slots fertig mit: 15 Tags, einmal allgemein
+und einmal je Figur, dazu fünf Porträt-Slots. Läuft in zwei aufeinander­
+folgenden Beats derselbe Clip, wird er nicht neu gestartet.
 
-Code und Text: siehe [`LICENSE`](LICENSE).
+**Dieses Repository enthält kein Bild- oder Videomaterial und lädt auch keines
+herunter.** Es gibt bewusst keine Funktion, die Clips oder Fotos von fremden
+Plattformen bezieht. Bei realen, identifizierbaren Personen wäre das eine
+Verbreitung ohne deren Einwilligung (§§ 22 KUG, 184k, 201a StGB) und zugleich
+eine Urheberrechtsverletzung — beides unabhängig davon, ob damit Geld verdient
+wird. Welche Wege tragfähig sind, steht in [`media/README.md`](media/README.md).
 
 ## Tests
 
 ```bash
-node tools/validate.js       # alle Szenenverweise aufloesbar, keine Sackgassen
-node tools/reachability.js   # 4000 Zufallsdurchlaeufe: jedes Ende erreichbar?
+node tools/validate.js       # Verweise, Sackgassen, Stufen-Konvention, Visual-Tags
+node tools/reachability.js   # 5000 Zufalls- plus gerichtete Durchlaeufe
 ```
 
 Beide laufen bei jedem Push in GitHub Actions, bevor deployt wird.

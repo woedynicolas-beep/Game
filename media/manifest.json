@@ -1,11 +1,680 @@
 {
-  "version": 1,
-  "_hinweis": "Leerer src = eingebaute prozedurale Animation. Siehe media/README.md, bevor du hier etwas einträgst.",
+  "version": 2,
+  "_hinweis": "Leerer src = eingebaute prozedurale Animation. Gesucht wird erst '<frau>/<tag>', dann '<tag>'. Siehe media/README.md, bevor du hier etwas eintraegst.",
+  "_tags": [
+    "talk",
+    "close",
+    "touch",
+    "kiss",
+    "undress",
+    "hands",
+    "oral_give",
+    "oral_take",
+    "enter",
+    "slow",
+    "hard",
+    "ride",
+    "behind",
+    "climax",
+    "after"
+  ],
+  "portraits": {
+    "sabine": {
+      "src": "",
+      "credit": "",
+      "license": ""
+    },
+    "christa": {
+      "src": "",
+      "credit": "",
+      "license": ""
+    },
+    "lena": {
+      "src": "",
+      "credit": "",
+      "license": ""
+    },
+    "andrea": {
+      "src": "",
+      "credit": "",
+      "license": ""
+    },
+    "marlene": {
+      "src": "",
+      "credit": "",
+      "license": ""
+    }
+  },
   "clips": {
-    "sc_nadine":  { "src": "", "poster": "", "credit": "", "license": "", "muted": true },
-    "sc_selina":  { "src": "", "poster": "", "credit": "", "license": "", "muted": true },
-    "sc_yvonne":  { "src": "", "poster": "", "credit": "", "license": "", "muted": true },
-    "sc_ricarda": { "src": "", "poster": "", "credit": "", "license": "", "muted": true },
-    "sc_trio":    { "src": "", "poster": "", "credit": "", "license": "", "muted": true }
+    "talk": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "close": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "touch": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "kiss": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "undress": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "hands": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "oral_give": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "oral_take": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "enter": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "slow": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "hard": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "ride": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "behind": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "climax": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "after": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "sabine/talk": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "sabine/close": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "sabine/touch": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "sabine/kiss": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "sabine/undress": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "sabine/hands": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "sabine/oral_give": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "sabine/oral_take": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "sabine/enter": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "sabine/slow": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "sabine/hard": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "sabine/ride": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "sabine/behind": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "sabine/climax": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "sabine/after": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "christa/talk": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "christa/close": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "christa/touch": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "christa/kiss": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "christa/undress": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "christa/hands": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "christa/oral_give": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "christa/oral_take": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "christa/enter": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "christa/slow": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "christa/hard": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "christa/ride": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "christa/behind": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "christa/climax": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "christa/after": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "lena/talk": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "lena/close": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "lena/touch": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "lena/kiss": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "lena/undress": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "lena/hands": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "lena/oral_give": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "lena/oral_take": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "lena/enter": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "lena/slow": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "lena/hard": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "lena/ride": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "lena/behind": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "lena/climax": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "lena/after": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "andrea/talk": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "andrea/close": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "andrea/touch": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "andrea/kiss": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "andrea/undress": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "andrea/hands": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "andrea/oral_give": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "andrea/oral_take": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "andrea/enter": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "andrea/slow": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "andrea/hard": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "andrea/ride": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "andrea/behind": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "andrea/climax": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "andrea/after": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "marlene/talk": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "marlene/close": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "marlene/touch": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "marlene/kiss": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "marlene/undress": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "marlene/hands": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "marlene/oral_give": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "marlene/oral_take": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "marlene/enter": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "marlene/slow": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "marlene/hard": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "marlene/ride": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "marlene/behind": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "marlene/climax": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    },
+    "marlene/after": {
+      "src": "",
+      "poster": "",
+      "credit": "",
+      "license": "",
+      "muted": true
+    }
   }
 }

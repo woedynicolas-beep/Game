@@ -9,8 +9,12 @@
       aber stimmungstragend. Braucht keine externen Dateien.
 
    2) EIGENE CLIPS (optional, vom Betreiber selbst zu hinterlegen)
-      Wird in media/manifest.json für eine Szenen-ID ein "src" gesetzt,
-      spielt die Engine stattdessen dieses Video.
+      Jede Textzeile trägt einen Visual-Tag (kiss, undress, ride …).
+      Wechselt die Beschreibung, wechselt der Clip. Gesucht wird in
+      dieser Reihenfolge:
+          clips["<frau>/<tag>"]   z. B. "lena/ride"
+          clips["<tag>"]          z. B. "ride"
+          prozedurale Animation
 
       Diese Dateien werden bewusst NICHT mitgeliefert und von der Engine
       auch nicht automatisch beschafft. Wer hier Material einträgt, ist
@@ -62,24 +66,52 @@ const Media = (() => {
     ctx.setTransform(d,0,0,d,0,0);
   }
 
-  /* ── Szene setzen ──────────────────────────────────────── */
+  /* ── Szene/Beat setzen ─────────────────────────────────── */
+  let curSrc = null;
+
+  function lookup(id, who){
+    const c = manifest.clips || {};
+    if (who && c[who + '/' + id] && c[who + '/' + id].src) return c[who + '/' + id];
+    if (c[id] && c[id].src) return c[id];
+    return null;
+  }
+
   function show(scene){
+    const prev = cur;
+    cur = Object.assign({palette:'night', intensity:0.2, figures:2, motion:'drift'}, scene||{});
+    if (!prev || prev.id !== cur.id) t = 0;
+
+    const clip = enabled && cur.id ? lookup(cur.id, cur.who) : null;
+    if (clip){
+      // Gleicher Clip wie im vorigen Beat: weiterlaufen lassen, nicht neu starten.
+      if (curSrc !== clip.src) playVideo(clip);
+      else if (badge) badgeText(clip.credit || cur.label);
+      return;
+    }
     clearVideo();
-    cur = Object.assign({palette:'night', intensity:0.2, figures:1, motion:'drift'}, scene||{});
-    t = 0;
-
-    const clip = cur.id && manifest.clips && manifest.clips[cur.id];
-    if (enabled && clip && clip.src) { playVideo(clip); return; }
-
     canvas.style.display = 'block';
     resize();
-    if (badge){
-      if (cur.label){ badge.textContent = cur.label; badge.classList.remove('hidden'); }
-      else badge.classList.add('hidden');
-    }
+    badgeText(cur.label);
+  }
+
+  function badgeText(txt){
+    if (!badge) return;
+    badge.textContent = txt || '';
+    badge.classList.toggle('hidden', !txt);
+  }
+
+  /* ── Porträt: eigenes Bild aus dem Manifest, sonst Platzhalter ── */
+  function portraitHTML(tag, w){
+    const p = manifest.portraits && manifest.portraits[tag];
+    if (p && p.src) return `<img src="${p.src}" alt="${w.n}" loading="lazy">`;
+    const init = w.n.split(' ').filter(x => !/^(Dr\.|Frau|Herr)$/.test(x))
+                    .map(x => x[0]).join('').slice(0, 2);
+    return `<span class="pc-init">${init}</span>`;
   }
 
   function playVideo(clip){
+    clearVideo();
+    curSrc = clip.src;
     canvas.style.display = 'none';
     videoEl = document.createElement('video');
     Object.assign(videoEl, {
@@ -90,20 +122,18 @@ const Media = (() => {
     if (clip.poster) videoEl.poster = clip.poster;
     layer.appendChild(videoEl);
     videoEl.play().catch(()=>{ /* Autoplay geblockt — Poster bleibt */ });
-    if (badge){
-      badge.textContent = clip.credit || cur.label || '';
-      badge.classList.toggle('hidden', !badge.textContent);
-    }
+    badgeText(clip.credit || cur.label);
   }
 
   function clearVideo(){
     if (videoEl){ videoEl.pause(); videoEl.remove(); videoEl = null; }
+    curSrc = null;
   }
 
   function setEnabled(v){
     enabled = v;
-    if (!v) clearVideo();
-    if (cur) show(cur);
+    clearVideo();
+    if (cur) show(Object.assign({}, cur));
   }
 
   /* ── Prozedurale Animation ─────────────────────────────── */
@@ -206,5 +236,5 @@ const Media = (() => {
     return `rgba(${n>>16&255},${n>>8&255},${n&255},${a})`;
   }
 
-  return {init, show, setEnabled, get manifest(){return manifest}};
+  return {init, show, setEnabled, portraitHTML, get manifest(){return manifest}};
 })();
